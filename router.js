@@ -1,3 +1,12 @@
+/******************
+ * This project is recreated from the following source:
+ * 
+ * Title: Node Express Image Upload And Resize Tutorial Example
+ * Author: Krunal Lathiya
+ * Availability: https://appdividend.com/2019/02/14/
+ *  node-express-image-upload-and-resize-tutorial-example/
+ */
+
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -18,7 +27,8 @@ router.post('/post', upload.single('image'), async function (req, res) {
     res.status(401).json({error: 'Please provide an image'});
   }
   const filename = await fileUpload.save(req.file.buffer);
-  return res.status(200).json({ name: filename });
+  
+  return res.status(200).json({ title: req.body.title, name: filename });
 });
 
 module.exports = router;
